@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="vegaLora">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1">
+        <title>IOT Vega Server</title>
+        
+        <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/nya-bs-select.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/jquery-ui.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/jquery-ui.structure.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/jquery-ui.theme.min.css">       
+        <link rel="stylesheet" type="text/css" href="./css/animate.css">
+        <link rel="stylesheet" type="text/css" href="./css/isteven-multi-select.css">
+        <link rel="stylesheet" href="./css/libs.min.css">
+        <link rel="stylesheet" href="./css/leaflet.css">
+        <link rel="stylesheet" type="text/css" href="./css/style.css?V1.1">
+        <link rel="stylesheet" type="text/css" href="./css/auth_style.css?V1.1">
+        <script src="./js/cookie.js"></script>
+        <script src="config.js?V1.1"></script>
+        <script src="./js/jquery.min.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBizZgj0BFVNcye0FxCCmawJ1sGfx8aT0M"></script>
+        <script src="./js/highcharts.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <script src="./js/jQuery.print.js"></script>
+        <script type="text/javascript" src="./js/libs/FileSaver/FileSaver.min.js"></script>
+        <script type="text/javascript" src="./js/libs/js-xlsx/xlsx.core.min.js"></script>
+        <script type="text/javascript" src="./js/libs/jsPDF/jspdf.min.js"></script>
+        <script type="text/javascript" src="./js/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+        <script type="text/javascript" src="./js/libs/html2canvas/html2canvas.min.js"></script>
+        <script type="text/javascript" src="./js/tableExport.min.js"></script>
+        <script src="./js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="./js/moment.min.js"></script>
+        <script type="text/javascript" src="./js/moment-with-locales.js"></script>
+        <script type="text/javascript" src="js/vega_lib.js?V1.1"></script>
+        <script src="./js/leaflet.js"></script>
+        <script src="./js/angular/angular.min.js"></script>
+        <script src="./js/angular-leaflet-directive.min.js"></script>
+        <script src="./js/angular-leaflet-directive-mapresize.js"></script>
+        <script src="./js/angular/angular-animate.min.js" ></script>
+        <script src="./js/angular/angular-sanitize.min.js"></script>
+        <script src="./js/angular-strap.js" data-semver="v2.3.8"></script>
+        <script src="./js/angular-strap.tpl.js" data-semver="v2.3.8"></script>
+        <script src="./js/angular-strap.docs.tpl.js" data-semver="v2.3.8"></script>
+        <script src="./js/isteven-multi-select.js"></script>
+        <script src="./js/nya-bs-select.min.js"></script>
+        <script type="text/javascript" src="./js/daterangepicker.js"></script>
+        <link rel="stylesheet" type="text/css" href="./css/daterangepicker.css" /> 
+    </head>
+    <body  ng-controller="AppController"> 
+        <div class="row">
+           <div class="container text-center">
+               <div class="window_auth">
+                   <div class="panel panel-primary">
+                       <div class="panel-heading"> Authorization IOT Vega Server </div>
+                        <div class="panel-body">
+                            <div class="col-sm-12 input-def text-left" ng-class="true?'':'input-def-danger'">
+                                <p>Login</p>
+                                <input autocomplete="on" ng-enter="enter_input()"  type="text" maxlength="25" class="form-control" placeholder="Login"  title="Login" ng-model="login">
+                            </div>
+                            <div class="col-sm-12 input-def text-left" ng-class="true?'':'input-def-danger'">
+                                <p>Password</p>
+                                <input autocomplete="on" ng-enter="enter_input()" type="password" maxlength="25" class="form-control" placeholder="Password"  title="Password" ng-model="password">
+                            </div>
+                            <div ng-show="full_settings&&select_server" class="col-sm-12 input-def text-left" ng-class="true?'':'input-def-danger'">
+                                <p ng-dblclick="cheat()">WebSocket address <span class="fa fa-podcast info" title="Status connect" ng-class="websocket.connect.status?'text-success':'text-danger'"></span></p>
+                                <input  type="text" ng-change="websocket.reload()" class="form-control" placeholder="WebSocket address"  title="WebSocket address" ng-model="address">
+                                <div style="position: absolute;top: 2.9rem;right: 1.5rem; top:calc(100% - 3.19rem)" class="btn" title="Default" ng-click="address=ws.address"><span class="fa fa-reply"></span></div>
+                            </div>
+                             
+                        </div>
+                        <div class="panel-footer text-right" >
+                            <div ng-click="toggleSettings()" style="float: left" class="btn " title="Authorization parameters" ng-show="select_server"><span class="fa fa-gears"> </span></div>
+						<div class="btn btn-info" ng-if="demo_user" style="margin: 0" ng-click="demo()">Demo</div>
+                            <div class="btn btn-success" ng-click="auth()">Sign in</div>
+                        </div>
+                    </div>
+               </div>
+            </div> 
+        </div>
+        <script src="./js/app_auth.js?V1.1"></script>
+        <script src="./js/ngAutocomplete.js"></script> 
+    </body>
+</html>
